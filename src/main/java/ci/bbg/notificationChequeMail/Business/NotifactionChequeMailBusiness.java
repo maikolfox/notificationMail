@@ -38,7 +38,7 @@ public class NotifactionChequeMailBusiness {
 	
 	
 	public HashMap<String, Object> NotificationCheque(NotifactionChequeMailDto requestDto) {
-		slf4jLogger.info("---------------init Notification BUSINESS begin-----------------");
+		slf4jLogger.info("---------------init MAIL Notification BUSINESS begin-----------------");
 		HashMap<String, Object> response = new HashMap<String, Object>();
 		// List<HashMap<String, Object>> datasServicesResult = null;
 		try {
@@ -91,7 +91,7 @@ public class NotifactionChequeMailBusiness {
 		}
 		response.put("hasError", false);
 		response.put("errorMessage", "envoie reussi");
-		slf4jLogger.info("---------------init Notification BUSINESS end  -----------------");
+		slf4jLogger.info("---------------END Notification Mail BUSINESS end  -----------------");
 		return response;
 	}
 	
