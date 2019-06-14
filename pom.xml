@@ -23,8 +23,37 @@
 	<artifactId>NotificatioChequeMail</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<name>WSO2 MSF4J Microservice</name>
+<!-- 	<build> -->
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.skife.maven</groupId> -->
+<!-- 				<artifactId>really-executable-jar-maven-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<programFile>NotificatioChequeMail</programFile> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>really-executable-jar</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<archive> -->
+<!-- 						<manifestEntries> -->
+<!-- 							<Microservices>${microservice.resourceClasses}</Microservices> -->
+<!-- 						</manifestEntries> -->
+<!-- 					</archive> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 
-
+<!-- 		</plugins> -->
+<!-- 	</build> -->
 	<dependencies>
 		<!-- Uncomment the following if you want to enable metrics & monitoring -->
 		<!-- <dependency> <groupId>org.wso2.msf4j</groupId> <artifactId>msf4j-analytics</artifactId> 
@@ -57,7 +86,48 @@
 	</dependencies>
 
 	<properties>
-		<microservice.mainClass>ci.bbg.notificationChequeMail.Application</microservice.mainClass>
+		<microservice.resourceClasses>ci.bbg.notificationChequeMail.Service.NotifactionChequeMailService</microservice.resourceClasses>
+		<microservice.mainClass>ci.bbg.Application</microservice.mainClass>
 	</properties>
-
+	<build>
+		<finalName>NotificationChequeMail</finalName>
+		<plugins>
+			<!-- Set a JDK compiler level -->
+			<plugin>
+				<groupId>org.skife.maven</groupId>
+				<artifactId>really-executable-jar-maven-plugin</artifactId>
+				<configuration>
+					<programFile>NotificatioChequeMail</programFile>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>really-executable-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Microservices>${microservice.resourceClasses}</Microservices>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

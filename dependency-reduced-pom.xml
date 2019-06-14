@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>msf4j-service</artifactId>
+    <groupId>org.wso2.msf4j</groupId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml/pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ci.bbg</groupId>
+  <artifactId>NotificatioChequeMail</artifactId>
+  <name>WSO2 MSF4J Microservice</name>
+  <version>0.1-SNAPSHOT</version>
+  <build>
+    <finalName>NotificationChequeMail</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.skife.maven</groupId>
+        <artifactId>really-executable-jar-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>really-executable-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <programFile>NotificatioChequeMail</programFile>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Microservices>${microservice.resourceClasses}</Microservices>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <microservice.resourceClasses>ci.bbg.notificationChequeMail.Service.NotifactionChequeMailService</microservice.resourceClasses>
+    <microservice.mainClass>ci.bbg.Application</microservice.mainClass>
+  </properties>
+</project>
+

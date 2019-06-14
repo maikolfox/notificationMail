@@ -60,4 +60,18 @@ public class NotifactionChequeMailService {
     }
 
    
+    @POST
+    @Consumes("application/json")
+	@Produces("application/json")
+    @Path("/task")
+    public Response task(NotifactionChequeMailDto request) {
+    	
+    	slf4jLogger.info("--------------- Send notification mail  SERVICE BEGIN-----------------");
+    	notifactionChequeMailBusiness=new NotifactionChequeMailBusiness();
+		HashMap<String, Object> response =new HashMap<>();
+				response.put("request",request);
+		slf4jLogger.info("--------------- initOrdreVirement SERVICE END-----------------");
+		return Response.status(Response.Status.OK).entity(response).build();
+      
+    }
 }

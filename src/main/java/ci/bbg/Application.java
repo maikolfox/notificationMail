@@ -27,7 +27,7 @@ import ci.bbg.notificationChequeMail.Service.NotifactionChequeMailService;
  */
 public class Application {
     public static void main(String[] args) {
-        new MicroservicesRunner(8088)
+        new MicroservicesRunner(9192)
                 .deploy(new NotifactionChequeMailService())
                 .start();
     }
